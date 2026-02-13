@@ -12,7 +12,7 @@ _Останнє оновлення: 10.02.2026_
 ### Ci (Ядро)
 | Репо | Призначення | Мова | Стан | Відповідальний |
 |------|-------------|------|------|---------------|
-| [ci_gitapi](https://github.com/Ihorog/ci_gitapi) | GitHub API orchestration, FastAPI backend | Python | ⚠️ Код є, не задеплоєно | Claude |
+| [ci_gitapi](https://github.com/Ihorog/ci_gitapi) | GitHub API orchestration, інтегровано з ci-memory | Python | ⚠️ Об'єднано з ci-memory, не задеплоєно | Claude |
 | [cit](https://github.com/Ihorog/cit) | Core integration toolkit | Python | ✅ 10 комітів | Claude |
 
 ### Казкар (Пам'ять)
