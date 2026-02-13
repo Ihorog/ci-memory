@@ -4,8 +4,10 @@
 
 ## Що це?
 
-`ci-memory` — єдиний спільний розум для Claude, Gemini, GPT і Copilot.  
+`ci-memory` — єдиний спільний розум для Claude, Gemini, GPT і Copilot.
 Замість 16 файлів — один центральний документ `MIND.md`.
+
+**Включає інтеграцію з ci_gitapi** — GitHub API orchestration для автоматичного оновлення контексту.
 
 ## Як використовувати
 
