@@ -1,0 +1,7 @@
+repo:
+  repo_id: ci_memory
+  repo_name: ci-memory
+  visibility: snapshot_or_managed
+  layer: sidecar
+  class: memory_service
+  status: canonical_memory_sidecar

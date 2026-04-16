@@ -1,0 +1,23 @@
+name: memory-check
+
+on:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "10 3 * * *"
+
+jobs:
+  memory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check memory manifests
+        run: |
+          test -f manifests/repo-identity.yaml
+          test -f manifests/repo-boundary.yaml
+          test -f docs/processes/memory-role.md
+
+      - name: List memory files
+        run: |
+          find . -maxdepth 3 -type f | sort | head -120
