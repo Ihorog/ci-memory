@@ -1,0 +1,14 @@
+repo_id: ci_memory
+
+boundaries:
+  allowed:
+    - memory_engine
+    - retrieval
+    - indexing
+    - persistence
+    - memory_api
+  not_allowed:
+    - primary_product_ui
+    - infra_control_plane
+    - primary_edge_runtime
+    - canonical_media_source
