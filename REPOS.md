@@ -1,151 +1,91 @@
 # 📦 REPOS.md — Реєстр Репозиторіїв
 
-> Централізований каталог усіх репозиторіїв облікового запису Ihorog.
-> Кожен репо має категорію, призначення, стан, відповідального.
+> Централізований каталог канонічних репозиторіїв CIMEIKA.
+> Кожен репо має роль у системі, стан і відповідального.
 
-_Останнє оновлення: 10.02.2026_
-
----
-
-## 🔵 CIMEIKA — Екосистема (Core Modules)
-
-### Ci (Ядро)
-| Репо | Призначення | Мова | Стан | Відповідальний |
-|------|-------------|------|------|---------------|
-| [ci_gitapi](https://github.com/Ihorog/ci_gitapi) | GitHub API orchestration, інтегровано з ci-memory | Python | ⚠️ Об'єднано з ci-memory, не задеплоєно | Claude |
-| [cit](https://github.com/Ihorog/cit) | Core integration toolkit | Python | ✅ 10 комітів | Claude |
-
-### Казкар (Пам'ять)
-| Репо | Призначення | Мова | Стан | Відповідальний |
-|------|-------------|------|------|---------------|
-| [ci-memory](https://github.com/Ihorog/ci-memory) | Єдиний контекст для AI-агентів | Markdown | ✅ Активний v3.0 | Claude + Copilot |
-| [ciwiki](https://github.com/Ihorog/ciwiki) | Knowledge base, документація | Markdown | ✅ 199 комітів | Claude |
-
-### Календар (Час)
-| Репо | Призначення | Мова | Стан | Відповідальний |
-|------|-------------|------|------|---------------|
-| [ci-moment](https://github.com/Ihorog/ci-moment) | Планування, транзакції, Stripe | Next.js | ⚠️ Код є, не сконфігуровано | Claude |
-
-### Подія (Сценарії)
-| Статус | Примітки |
-|--------|----------|
-| ❌ Не реалізовано | Потребує створення репо з дозволу Казкара |
-
-### Настрій (Емоції)
-| Статус | Примітки |
-|--------|----------|
-| ❌ Не реалізовано | Потребує концепції від GPT |
-
-### Маля (Ідеї)
-| Статус | Примітки |
-|--------|----------|
-| ❌ Не реалізовано | Потребує інтеграції з Календар |
-
-### Галерея (Візуал)
-| Статус | Примітки |
-|--------|----------|
-| 🔒 LOCKED | Розблокування після запуску 6 модулів |
+_Останнє оновлення: 21.04.2026 (повний аудит Claude)_
 
 ---
 
-## 🌐 CIMEIKA — Infrastructure
+## 🔵 CIMEIKA — Canonical Planes
 
-| Репо | Призначення | Мова | Стан | Деплой |
+### Presentation Plane
+| Репо | Призначення | Стек | Стан | Деплой |
 |------|-------------|------|------|--------|
-| [cimeika-app](https://github.com/Ihorog/cimeika-app) | Main application, PWA | TypeScript | ✅ 182+ комітів | Потребує деплою |
-| [cimeika-unified](https://github.com/Ihorog/cimeika-unified) | Unified monorepo experiment | Mixed | ⏸️ Паузa | — |
-| [cit_versel](https://github.com/Ihorog/cit_versel) | Vercel deployment config | JavaScript | ⚠️ Не задеплоєно | Vercel |
-| [media](https://github.com/Ihorog/media) | Media processing pipeline | Python | ❌ Не активний | — |
+| [cimeika-unified](https://github.com/Ihorog/cimeika-unified) | **CANONICAL** presentation plane. 7 модулів: Ci, Казкар, Подія, Настрій, Маля, Календар, Галерея | FastAPI + Next.js 16 + PostgreSQL + pgvector + Docker | ✅ Код є, ❌ не задеплоєно | Vercel (потрібно) |
+
+### Control Plane (Local)
+| Репо | Призначення | Стек | Стан | Деплой |
+|------|-------------|------|------|--------|
+| [cit](https://github.com/Ihorog/cit) | Local control plane. API gateway, chat proxy, audit endpoints. v2.1.0 | Python + Termux + Docker | ✅ v2.1.0 Active | Termux / Docker local |
+
+### Control Plane (Cloud)
+| Репо | Призначення | Стек | Стан | Деплой |
+|------|-------------|------|------|--------|
+| [ci_gitapi](https://github.com/Ihorog/ci_gitapi) | Cloud control plane. Policy engine, GitHub App, orchestration, /ci/state | FastAPI + Supabase + GitHub Apps + Vercel | ✅ Код є, ❌ не задеплоєно | Vercel (потрібні credentials) |
+
+### Knowledge / Policy Plane
+| Репо | Призначення | Стек | Стан | Деплой |
+|------|-------------|------|------|--------|
+| [ciwiki](https://github.com/Ihorog/ciwiki) | Knowledge hub, docs, Legend CI, CIT Voice, security policies | MkDocs + Python + Node.js | ✅ Live | GitHub Pages → www.cimeika.com.ua |
+
+### Coordination Plane
+| Репо | Призначення | Стек | Стан | Деплой |
+|------|-------------|------|------|--------|
+| [ci-memory](https://github.com/Ihorog/ci-memory) | Shared AI agent context. MIND.md + CONSTITUTION.md + ci_state_code.json | Markdown + GitHub Actions | ✅ Активний | GitHub only |
+
+### Assets Registry
+| Репо | Призначення | Стек | Стан | Деплой |
+|------|-------------|------|------|--------|
+| [media](https://github.com/Ihorog/media) | Brand assets, character imagery, narrative images, icon sets | Node.js + JS scripts | ✅ CDN active (indexes порожні) | GitHub Raw CDN |
 
 ---
 
-## 🏠 ОСОБИСТІ — Personal Projects
+## 🌐 Canonical Domain Binding
 
-| Репо | Призначення | Мова | Стан | Примітки |
-|------|-------------|------|------|----------|
-| [Ihorog](https://github.com/Ihorog/Ihorog) | GitHub Profile README | Markdown | ✅ Активний | Public profile |
-
-_Потребує повного аудиту решти репозиторіїв_
-
----
-
-## 🧪 ЕКСПЕРИМЕНТИ — Prototypes & Tests
-
-_Потребує аудиту. Критерій: репо без активності >6 місяців, <10 комітів_
-
-| Репо | Останнє оновлення | Рішення |
-|------|------------------|---------|
-| _(pending audit)_ | — | Архівувати або видалити |
+| Домен | Ціль | Стан |
+|-------|------|------|
+| `cimeika.com.ua` | cimeika-unified (Vercel) | ❌ Не прив'язаний |
+| `www.cimeika.com.ua` | ciwiki (GitHub Pages) | ✅ Live |
+| HF Space | `https://ihorog-cimeika-api.hf.space` | ✅ Running (fallback API) |
 
 ---
 
-## 🗄️ АРХІВ — Deprecated
+## 🗄️ DEPRECATED
 
-_Репозиторії, які більше не використовуються. Кандидати на видалення._
-
-| Репо | Причина архівації | Останнє оновлення | Можна видалити? |
-|------|------------------|------------------|-----------------|
-| _(pending audit)_ | — | — | ⏳ Чекає рішення Казкара |
+| Репо | Причина | Замінено на | Дія |
+|------|---------|------------|-----|
+| [cimeika-app](https://github.com/Ihorog/cimeika-app) | Публікаційний контур перенесено на cimeika-unified | cimeika-unified | Архівувати (очікує рішення Казкара) |
 
 ---
 
 ## 📊 СТАТИСТИКА
 
-**Загалом:** 23 репозиторії (за даними Claude 10.02.2026)
-
-**Розподіл за категоріями:**
-- 🔵 CIMEIKA Core: **5** (3 активні, 2 не задеплоєні)
-- 🌐 CIMEIKA Infrastructure: **4** (1 активний, 3 проблемні)
-- 🏠 Особисті: **1** підтверджений, ~13 потребують аудиту
-- 🧪 Експерименти: ❓ (потребує аудиту)
-- 🗄️ Архів: ❓ (пот��ебує аудиту)
-
-**Стан:**
-- ✅ Активні: **6**
-- ⚠️ Потребують деплою/конфігу: **3**
-- ⏸️ Пауза: **1**
-- ❌ Не реалізовано: **3** (нові модулі)
-- 🔒 Locked: **1**
-- ❓ Невідомо: **~9**
+**Canonical repos:** 6  
+**Deployed:** 2 (ciwiki, cit/local)  
+**Code ready, not deployed:** 2 (cimeika-unified, ci_gitapi)  
+**Coordination/assets (no deploy needed):** 2 (ci-memory, media)  
+**Deprecated:** 1 (cimeika-app)
 
 ---
 
-## 🔄 АВТО-ОНОВЛЕННЯ
-
-**Тригери:**
-- Створення нового репо → автоматично додати до відповідної категорії
-- Архівація репо → перенести в секцію АРХІВ
-- Push/Deploy → оновити стан у таблиці
-- Зміна опису репо → синхронізувати опис
-
-**Процес:**
-1. Observer script моніторить усі репо
-2. При зміні → оновлює REPOS.md
-3. Синхронізує з MIND.md (секція РЕСУРСИ)
-
-**Наступний повний аудит:** _Pending - потребує GitHub token_
-
----
-
-## 🎯 ДІЇ ПОТРІБНІ
+## 🎯 DІЇ ПОТРІБНІ
 
 ### Priority 111 (Critical)
-- [ ] Запустити повний аудит 23 репозиторіїв
-- [ ] Класифікувати ~14 невідомих репо
-- [ ] Визначити кандидатів на архівацію
+- [ ] Deploy cimeika-unified → Vercel
+- [ ] Bind `cimeika.com.ua` apex DNS → Vercel
 
 ### Priority 11 (Active)
-- [ ] Deploy ci_gitapi → Production
-- [ ] Deploy cimeika-app → Vercel
-- [ ] Config ci-moment → Supabase + Stripe
+- [ ] Deploy ci_gitapi → Vercel (потрібні: GitHub App creds + Supabase)
+- [ ] Активувати CI_GITAPI_URL в cimeika-unified після deploy
 
 ### Priority 1 (Background)
-- [ ] Налаштувати weekly auto-audit
-- [ ] Інтегрувати з Observer script
+- [ ] Populate media indexes: `npm run ingest` у media repo
+- [ ] Архівувати cimeika-app (рішення Казкара)
 
 ---
 
-**Версія:** 1.0  
+**Версія:** 2.0  
 **Власник:** Казкар (CIMEIKA)  
-**Підтримка:** Claude + Copilot  
-**Ліцензія:** Авторське право Казкара, 2026
+**Підтримка:** Claude  
+**Аудит:** 21.04.2026

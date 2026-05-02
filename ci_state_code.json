@@ -1,0 +1,237 @@
+{
+  "meta": {
+    "version": "2026.04.21",
+    "schema": "ci_state_v1",
+    "generated_by": "claude-audit",
+    "source_repo": "ihorog/ci-memory",
+    "confidence": "high",
+    "audit_date": "2026-04-21",
+    "previous_audit": "2026-02-13"
+  },
+  "identity": {
+    "project": "Cimeika",
+    "owner": "Ihorog",
+    "owner_alias": "Kazkar",
+    "domains": {
+      "apex": "cimeika.com.ua",
+      "www": "www.cimeika.com.ua",
+      "status": "www_live_apex_unbound"
+    },
+    "status": "+"
+  },
+  "planes": {
+    "presentation": {
+      "canonical": "cimeika-unified",
+      "deprecated": ["cimeika-app"],
+      "fallback": "hf_space",
+      "public_url": null,
+      "status": "code_exists_not_deployed"
+    },
+    "control_local": {
+      "canonical": "cit",
+      "version": "2.1.0",
+      "runtime": ["termux", "docker"],
+      "status": "+"
+    },
+    "control_cloud": {
+      "canonical": "ci_gitapi",
+      "runtime": "vercel_serverless",
+      "status": "code_exists_not_deployed"
+    },
+    "knowledge": {
+      "canonical": "ciwiki",
+      "deployed_at": "https://www.cimeika.com.ua",
+      "status": "+"
+    },
+    "coordination": {
+      "canonical": "ci-memory",
+      "file": "MIND.md",
+      "status": "+"
+    },
+    "assets": {
+      "canonical": "media",
+      "cdn_url": "https://raw.githubusercontent.com/Ihorog/media/main",
+      "status": "+"
+    }
+  },
+  "repos": {
+    "cimeika-unified": {
+      "role": "presentation_plane",
+      "tech": ["FastAPI", "Next.js", "PostgreSQL", "pgvector", "Docker"],
+      "status": "+",
+      "deployed": false,
+      "last_audit": "2026-04-21",
+      "modules": ["ci", "kazkar", "podija", "nastrij", "malya", "calendar", "gallery"],
+      "integrations_ready": ["openai", "anthropic", "google_calendar", "telegram"],
+      "integrations_pending": ["ci_gitapi", "supabase"],
+      "note": "All 7 modules implemented. Deploy to Vercel + bind apex DNS is P0."
+    },
+    "cit": {
+      "role": "control_plane_local",
+      "tech": ["Python", "HTTP", "Termux"],
+      "version": "2.1.0",
+      "status": "+",
+      "deployed": true,
+      "runtime": "local",
+      "endpoints": ["/health", "/chat", "/audit", "/audit/resources"],
+      "last_audit": "2026-04-21"
+    },
+    "ci_gitapi": {
+      "role": "control_plane_cloud",
+      "tech": ["FastAPI", "Supabase", "GitHub Apps", "Vercel"],
+      "status": "+",
+      "deployed": false,
+      "runtime": "vercel_serverless",
+      "endpoints": ["/health", "/ci/state", "/control/decision", "/orchestrate/event", "/github/webhook"],
+      "blockers": ["GitHub App credentials", "Supabase config"],
+      "last_audit": "2026-04-21"
+    },
+    "ciwiki": {
+      "role": "knowledge_plane",
+      "tech": ["MkDocs", "Python", "Node.js"],
+      "status": "+",
+      "deployed": true,
+      "deployed_at": "https://www.cimeika.com.ua",
+      "via": "github_pages",
+      "last_audit": "2026-04-21"
+    },
+    "ci-memory": {
+      "role": "coordination_plane",
+      "tech": ["Markdown", "GitHub Actions"],
+      "status": "+",
+      "deployed": false,
+      "canonical_file": "MIND.md",
+      "last_audit": "2026-04-21"
+    },
+    "media": {
+      "role": "assets_registry",
+      "tech": ["Node.js", "JavaScript"],
+      "status": "+",
+      "deployed": true,
+      "cdn_url": "https://raw.githubusercontent.com/Ihorog/media/main",
+      "indexes_populated": false,
+      "last_audit": "2026-04-21"
+    }
+  },
+  "deprecated": {
+    "cimeika-app": {
+      "reason": "Publication contour moved to cimeika-unified",
+      "replaced_by": "cimeika-unified",
+      "deprecated_since": "2026-04",
+      "action": "archive_pending_kazkar_approval"
+    }
+  },
+  "integrations": {
+    "hf_space": {
+      "provider": "Hugging Face Spaces",
+      "url": "https://ihorog-cimeika-api.hf.space",
+      "role": "public_fallback_api",
+      "status": "running"
+    },
+    "supabase": {
+      "role": "database_memory",
+      "status": "not_connected"
+    },
+    "telegram": {
+      "role": "notifications",
+      "status": "configured_in_ciwiki"
+    },
+    "github_apps": {
+      "role": "webhook_orchestration",
+      "status": "not_configured"
+    },
+    "openai": {
+      "role": "inference",
+      "status": "configured"
+    },
+    "google_calendar": {
+      "role": "calendar_sync",
+      "status": "configured_in_unified"
+    }
+  },
+  "binding_rules": {
+    "apex_domain": {
+      "domain": "cimeika.com.ua",
+      "target": "cimeika-unified",
+      "current_state": "unbound",
+      "required_action": "vercel_deploy_and_dns"
+    },
+    "www_domain": {
+      "domain": "www.cimeika.com.ua",
+      "target": "ciwiki",
+      "current_state": "bound",
+      "via": "github_pages"
+    },
+    "public_api": {
+      "canonical": "ci_gitapi",
+      "fallback": "hf_space",
+      "current_state": "fallback_only"
+    }
+  },
+  "issues": {
+    "p0": [
+      {
+        "id": "P0-1",
+        "title": "cimeika-unified not deployed publicly",
+        "description": "Canonical presentation plane has no public binding. Apex domain cimeika.com.ua not connected to any app runtime.",
+        "action": "Deploy cimeika-unified to Vercel, bind apex domain DNS"
+      },
+      {
+        "id": "P0-2",
+        "title": "apex domain cimeika.com.ua unbound",
+        "description": "www.cimeika.com.ua is live via ciwiki/GitHub Pages, but apex has no app binding.",
+        "action": "Add Vercel project for cimeika-unified, configure apex DNS to Vercel"
+      }
+    ],
+    "p1": [
+      {
+        "id": "P1-1",
+        "title": "ci_gitapi not deployed",
+        "description": "Cloud control plane exists but requires GitHub App + Supabase credentials to deploy.",
+        "action": "Configure GitHub App credentials, set Supabase env, deploy to Vercel"
+      },
+      {
+        "id": "P1-2",
+        "title": "CI_GITAPI_URL inactive in cimeika-unified",
+        "description": ".env.example has CI_GITAPI_URL defined but not integrated in code.",
+        "action": "Activate after ci_gitapi is deployed"
+      }
+    ],
+    "p2": [
+      {
+        "id": "P2-1",
+        "title": "media indexes are empty",
+        "description": "albums.json, tags.json, images.jsonl are schema-defined but contain no data.",
+        "action": "Run npm run ingest in media repo to populate indexes"
+      }
+    ]
+  },
+  "execution_priority": {
+    "now": [
+      "Deploy cimeika-unified to Vercel",
+      "Bind cimeika.com.ua apex DNS to Vercel"
+    ],
+    "next": [
+      "Deploy ci_gitapi (configure GitHub App + Supabase)",
+      "Activate CI_GITAPI_URL in cimeika-unified after ci_gitapi deploy"
+    ],
+    "background": [
+      "Populate media indexes via npm run ingest",
+      "Archive cimeika-app (pending Kazkar approval)"
+    ]
+  },
+  "state_codes": {
+    "000": "DORMANT — inactive or archived",
+    "011": "ACTIVE — normal operation",
+    "111": "CRITICAL — priority or urgent"
+  },
+  "system_state": {
+    "overall": "011",
+    "presentation": "000",
+    "control_local": "011",
+    "control_cloud": "000",
+    "knowledge": "011",
+    "coordination": "011",
+    "assets": "011"
+  }
+}
