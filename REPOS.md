@@ -12,7 +12,7 @@ _Останнє оновлення: 21.04.2026 (повний аудит Claude)_
 ### Presentation Plane
 | Репо | Призначення | Стек | Стан | Деплой |
 |------|-------------|------|------|--------|
-| [cimeika-unified](https://github.com/Ihorog/cimeika-unified) | **CANONICAL** presentation plane. 7 модулів: Ci, Казкар, Подія, Настрій, Маля, Календар, Галерея | FastAPI + Next.js 16 + PostgreSQL + pgvector + Docker | ✅ Код є, ❌ не задеплоєно | Vercel (потрібно) |
+| [cimeika-unified](https://github.com/Ihorog/cimeika-unified) | **CANONICAL** presentation plane. 7 модулів: Ci, Казкар, Подія, Настрій, Маля, Календар, Галерея | FastAPI + Next.js + PostgreSQL + pgvector + Docker | ✅ Код є, ❌ не задеплоєно | Vercel (потрібно) |
 
 ### Control Plane (Local)
 | Репо | Призначення | Стек | Стан | Деплой |
