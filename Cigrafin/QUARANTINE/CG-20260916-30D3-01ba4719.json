@@ -1,0 +1,41 @@
+{
+  "schema": "ci.graf.envelope.v1",
+  "id": "CG-20260916-30D3-01ba4719",
+  "received_at": "2026-09-16T20:27:57.583Z",
+  "source": {
+    "channel": "github",
+    "repo": "Ihorog/ci-memory",
+    "path": "Cigrafin/ollin",
+    "directed_by": "kazkar"
+  },
+  "raw": {
+    "filename": "ollin",
+    "media_type": "application/octet-stream",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "bytes": 1,
+    "text_excerpt": "\n"
+  },
+  "domain": "DATA",
+  "cimeika_module": "Казкар",
+  "classification": "unknown",
+  "targetNode": "ci.unknown.node",
+  "executionCenter": "local",
+  "permissionLevel": "L0_READ",
+  "gate": "quarantine",
+  "taskStatus": "UNKNOWN",
+  "intake": "POST /ci/signal",
+  "kernel_class": "unknown",
+  "new_kind": true,
+  "reason": "classifySignal=unknown",
+  "proof": {
+    "executor": null,
+    "evidence_id": null,
+    "completed": false
+  },
+  "kernel": {
+    "url": "https://ci-contact-kernel.vercel.app",
+    "http": null,
+    "task_id": null,
+    "kernel_status": null
+  }
+}
