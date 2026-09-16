@@ -1,0 +1,61 @@
+name: cigraf-ingest
+
+on:
+  push:
+    paths:
+      - "Cigrafin/INBOX/**"
+      - "Cigrafin/ollin"
+      - "scripts/cigraf-ingest.js"
+      - ".github/workflows/cigraf-ingest.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cigraf-ingest
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    if: github.repository == 'Ihorog/ci-memory'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout mailbox
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout living kernel classifier
+        uses: actions/checkout@v4
+        with:
+          repository: Ihorog/Ci-Contact-Kernel
+          path: .kernel-src
+          sparse-checkout: |
+            src/classifier.js
+            src/router.js
+            src/constants.js
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run ingest
+        env:
+          KERNEL_SRC: ${{ github.workspace }}/.kernel-src/src
+          CI_KERNEL_URL: ${{ secrets.CI_KERNEL_URL }}
+        run: node scripts/cigraf-ingest.js
+
+      - name: Commit index
+        run: |
+          rm -rf .kernel-src
+          git config user.name "ci-graf-ingest"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Cigrafin/INDEX Cigrafin/QUARANTINE
+          if git diff --cached --quiet; then
+            echo "no index change"
+          else
+            git commit -m "🤖 copilot: cigraf ingest"
+            git push
+          fi
