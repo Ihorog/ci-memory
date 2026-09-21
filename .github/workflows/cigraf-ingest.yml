@@ -22,12 +22,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout mailbox
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       - name: Checkout living kernel classifier
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: Ihorog/Ci-Contact-Kernel
           path: .kernel-src
